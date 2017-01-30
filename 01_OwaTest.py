@@ -4,6 +4,7 @@ import autoit
 import time
 import HTMLTestRunner
 import sys
+from selenium.webdriver.common.keys import Keys
 #
 url = 'https://owa.mos.ru/EWS/Exchange.asmx'
 login = 'SolovievEV'
@@ -22,14 +23,19 @@ class LetsGo(unittest.TestCase):
             print('..')
         except:
             print('..')
+
         handle = driver.current_window_handle
         driver.switch_to.window(handle)
+        time.sleep(3)
+        driver.find_element_by_tag_name('body').send_keys(Keys.F5)
+        
         try:
             time.sleep(5)
             alert = driver.switch_to.alert()
             alert.accept()
         except:
             print('No alert')
+        autoit.mouse_click(button='left',x=573,y=233)
         autoit.win_wait_active('Требуется аутентификация')
         autoit.send('SolovievEV')
         autoit.send('{TAB}')
