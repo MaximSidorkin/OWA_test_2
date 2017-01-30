@@ -55,6 +55,7 @@ class LetsGo(unittest.TestCase):
         else:
             driver.get_screenshot_as_file('ERROR!')
             self.fail(print('Service is not available!'))
+        driver.close()
 
 if __name__ == '__main__':
     suite = unittest.TestSuite()
