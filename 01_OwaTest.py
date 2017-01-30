@@ -18,6 +18,7 @@ class LetsGo(unittest.TestCase):
         driver = webdriver.Firefox()
         driver.set_page_load_timeout(5)
         print('.')
+        driver.maximize_window()
         try:
             driver.get('https://owa.mos.ru/EWS/Exchange.asmx')
             print('..')
@@ -28,7 +29,7 @@ class LetsGo(unittest.TestCase):
         driver.switch_to.window(handle)
         time.sleep(3)
         driver.find_element_by_tag_name('body').send_keys(Keys.F5)
-        
+
         try:
             time.sleep(5)
             alert = driver.switch_to.alert()
