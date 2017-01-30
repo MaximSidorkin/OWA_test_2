@@ -4,7 +4,7 @@ import autoit
 import time
 import HTMLTestRunner
 import sys
-
+#
 url = 'https://owa.mos.ru/EWS/Exchange.asmx'
 login = 'SolovievEV'
 password = 'rOURDPTc'
@@ -22,6 +22,12 @@ class LetsGo(unittest.TestCase):
             print('..')
         except:
             print('..')
+        try:
+            time.sleep(5)
+            alert = driver.switch_to.alert()
+            alert.accept()
+        except:
+            print('No alert')
         autoit.win_wait_active('Требуется аутентификация')
         autoit.send('SolovievEV')
         autoit.send('{TAB}')
