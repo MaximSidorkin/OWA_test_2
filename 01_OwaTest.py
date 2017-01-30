@@ -22,6 +22,8 @@ class LetsGo(unittest.TestCase):
             print('..')
         except:
             print('..')
+        handle = driver.current_window_handle
+        driver.switch_to.window(handle)
         try:
             time.sleep(5)
             alert = driver.switch_to.alert()
