@@ -19,16 +19,21 @@ class LetsGo(unittest.TestCase):
         driver.set_page_load_timeout(5)
         print('.')
         driver.maximize_window()
+        handle = driver.current_window_handle
+        driver.switch_to.window(handle)
+        time.sleep(3)
+        driver.find_element_by_tag_name('body').send_keys(Keys.F5)
+
         try:
             driver.get('https://owa.mos.ru/EWS/Exchange.asmx')
             print('..')
         except:
             print('..')
 
-        handle = driver.current_window_handle
-        driver.switch_to.window(handle)
-        time.sleep(3)
-        driver.find_element_by_tag_name('body').send_keys(Keys.F5)
+        #handle = driver.current_window_handle
+        #driver.switch_to.window(handle)
+        #time.sleep(3)
+        #river.find_element_by_tag_name('body').send_keys(Keys.F5)
 
         try:
             time.sleep(5)
@@ -37,7 +42,7 @@ class LetsGo(unittest.TestCase):
         except:
             print('No alert')
         autoit.mouse_click(button='left',x=573,y=233)
-        autoit.win_wait_active('Требуется аутентификация')
+        #autoit.win_wait_active('Требуется аутентификация')
         autoit.send('SolovievEV')
         autoit.send('{TAB}')
         autoit.send('rOURDPTc')
@@ -45,8 +50,10 @@ class LetsGo(unittest.TestCase):
         time.sleep(10)
         all_r = driver.find_element_by_css_selector('p.heading1')
         if all_r.is_displayed():
+            driver.get_screenshot_as_file('ALL_RIGHT.jpg')
             print('All right')
         else:
+            driver.get_screenshot_as_file('ERROR!')
             self.fail(print('Service is not available!'))
 
 if __name__ == '__main__':
