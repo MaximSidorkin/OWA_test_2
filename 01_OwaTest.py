@@ -33,7 +33,7 @@ class LetsGo(unittest.TestCase):
             alert.accept()
         except:
             print('No alert')
-        autoit.mouse_click(button='left',x=755,y=453)   # 755, 453  # old x=573,y=233
+        autoit.mouse_click(button='left',x=800,y=500)   # 755, 453  # old x=573,y=233
         #autoit.win_wait_active('Требуется аутентификация')
         autoit.send('SolovievEV')
         autoit.send('{TAB}')
