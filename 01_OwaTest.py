@@ -14,7 +14,6 @@ class LetsGo(unittest.TestCase):
     def test_01_letMeIn(self):
         profile = webdriver.FirefoxProfile()
         profile.accept_untrusted_certs = True
-        # final ver.
         driver = webdriver.Firefox()
         driver.set_page_load_timeout(5)
         print('.')
@@ -23,25 +22,18 @@ class LetsGo(unittest.TestCase):
         driver.switch_to.window(handle)
         time.sleep(3)
         driver.find_element_by_tag_name('body').send_keys(Keys.F5)
-
         try:
             driver.get('https://owa.mos.ru/EWS/Exchange.asmx')
             print('..')
         except:
             print('..')
-
-        #handle = driver.current_window_handle
-        #driver.switch_to.window(handle)
-        #time.sleep(3)
-        #river.find_element_by_tag_name('body').send_keys(Keys.F5)
-
         try:
             time.sleep(5)
             alert = driver.switch_to.alert()
             alert.accept()
         except:
             print('No alert')
-        autoit.mouse_click(button='left',x=573,y=233)
+        autoit.mouse_click(button='left',x=755,y=453)   # 755, 453  # old x=573,y=233
         #autoit.win_wait_active('Требуется аутентификация')
         autoit.send('SolovievEV')
         autoit.send('{TAB}')
@@ -53,7 +45,7 @@ class LetsGo(unittest.TestCase):
             driver.get_screenshot_as_file('ALL_RIGHT.jpg')
             print('All right')
         else:
-            driver.get_screenshot_as_file('ERROR!')
+            driver.get_screenshot_as_file('ERROR.jpg')
             self.fail(print('Service is not available!'))
         driver.close()
 
